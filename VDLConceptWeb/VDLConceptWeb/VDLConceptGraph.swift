@@ -39,8 +39,6 @@ public class VDLConceptGraph: Printable {
     
     init() {
         
-        println("VDLConceptGraph loading ConceptIndex.conceptindex from bundle")
-        
         if let filePath = NSBundle.mainBundle().pathForResource("ConceptIndex", ofType:"conceptindex") {
             
             let loadedString = String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding, error: nil)
@@ -106,14 +104,20 @@ public class VDLConceptGraph: Printable {
                 }
             }
         }
-        
-        println("VDLConceptGraph loaded \(concepts.count) concepts")
     }
     
     
     public func probabilitySetForConcept(concept: VDLConceptObject, requireImages: Bool) -> VDLConceptProbabilitySet {
         // Introspect the provided concept and return a VDLConceptProbabilitySet
         return concept.introspectRelatedConcepts(Set<VDLConceptObject>(), requireImages: requireImages)
+    }
+    
+    public func probabilitySetForConceptWithUid(conceptUid: String, requireImages: Bool) -> VDLConceptProbabilitySet {
+        
+        let concept = self.conceptWithUid(conceptUid)
+        
+        // Introspect the provided concept and return a VDLConceptProbabilitySet
+        return probabilitySetForConcept(concept, requireImages: requireImages)
     }
     
     public func conceptWithUid(uid: String) -> VDLConceptObject {

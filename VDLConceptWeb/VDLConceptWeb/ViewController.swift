@@ -14,27 +14,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let conceptWeb = VDLConceptGraph.sharedInstance
+        let conceptGraph = VDLConceptGraph.sharedInstance
         
-        println(conceptWeb)
+        println("\(conceptGraph)")
         
-        let startingConcept = conceptWeb.conceptWithUid("ZOO")
+        let probabilitySet = conceptGraph.probabilitySetForConceptWithUid("ZOO", requireImages: false)
         
-        let probabilitySet = conceptWeb.probabilitySetForConcept(startingConcept, requireImages: false)
+        println("\nProbability set for ZOO without requiring images: \(probabilitySet)");
         
-        println("\nProbability set for ZOO without requiring images");
+        let nextProbabilitySet = conceptGraph.probabilitySetForConceptWithUid("ZOO", requireImages: true)
         
-        for (concept, probability) in probabilitySet.conceptDictionary {
-            println("\(concept.uid) - \(probability)")
-        }
-        
-        let nextProbabilitySet = conceptWeb.probabilitySetForConcept(startingConcept, requireImages: true)
-        
-        println("\nProbability set for ZOO requiring images");
-        
-        for (concept, probability) in nextProbabilitySet.conceptDictionary {
-            println("\(concept.uid) - \(probability)")
-        }
+        println("\nProbability set for ZOO requiring images: \(nextProbabilitySet)");
         
     }
 

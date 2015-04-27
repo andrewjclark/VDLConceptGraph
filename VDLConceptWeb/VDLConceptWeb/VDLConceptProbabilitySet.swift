@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class VDLConceptProbabilitySet {
+public class VDLConceptProbabilitySet: Printable {
     
     var conceptDictionary = Dictionary<VDLConceptObject, Double>()
     
@@ -51,4 +51,20 @@ public class VDLConceptProbabilitySet {
         
         return probabilityCount
     }
+    
+    public var description: String {
+        
+        var descriptionString = ""
+        
+        for (concept, probability) in self.conceptDictionary {
+            descriptionString = descriptionString + "\n\(concept.uid) - \(probability)"
+        }
+        
+        return descriptionString
+    }
+    
+    /*
+
+    
+*/
 }
