@@ -1,0 +1,30 @@
+//
+// Define a concept and it's relationship to other concepts and images that demonstrate this concept in 1 single line.
+// Format is: ConceptID RelatedConceptID,etc ImageName,etc
+// Lines that begin with // or are less than 3 characters long are ignored.
+//
+// So when defining the concept ANIMAL and that it is related to SNAKE, MONKEY and LION we type the following:
+ANIMAL SNAKE,MONKEY,LION
+
+// To define the images that represent the concept LION we type the following (note the double space since we are not defining related concepts)
+LION  lion1.png, lion2.png
+
+
+
+// Zoo Objects
+
+AMUSEMENTS ZOO
+ZOO ANIMAL,ZOOOBJECTS
+ZOOOBJECTS ZOOSIGN,ZOOGATE,ZOOCAGE
+ZOOSIGN  zoosign.png
+ZOOGATE  zoogate.png
+ZOOCAGE  zoocage.png
+
+
+
+// Animals
+
+ANIMAL SNAKE,MONKEY,LION
+SNAKE  snake.png
+MONKEY  monkey.png
+LION  lion1.png, lion2.png
